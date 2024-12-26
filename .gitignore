@@ -10,6 +10,7 @@ yarn.lock
 
 /.tauri
 /target
+/examples
 Cargo.lock
 node_modules/
 
