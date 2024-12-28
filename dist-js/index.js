@@ -1,25 +1,25 @@
 import { invoke } from '@tauri-apps/api/core';
 
-async function listVanillaVersions() {
-    return await invoke('plugin:minecraft-launcher|list_vanilla_versions');
+async function getVanillaVersions() {
+    return await invoke('plugin:minecraft-launcher|get_vanilla_versions');
 }
-async function listFabricVersions() {
-    return await invoke('plugin:minecraft-launcher|list_fabric_versions');
+async function getFabricVersions() {
+    return await invoke('plugin:minecraft-launcher|get_fabric_versions');
 }
-async function listFabricLoaders() {
-    return await invoke('plugin:minecraft-launcher|list_fabric_loaders');
+async function getFabricLoaders() {
+    return await invoke('plugin:minecraft-launcher|get_fabric_loaders');
 }
-async function listQuiltVersions() {
-    return await invoke('plugin:minecraft-launcher|list_quilt_versions');
+async function getQuiltVersions() {
+    return await invoke('plugin:minecraft-launcher|get_quilt_versions');
 }
-async function listQuiltLoaders() {
-    return await invoke('plugin:minecraft-launcher|list_quilt_loaders');
+async function getQuiltLoaders() {
+    return await invoke('plugin:minecraft-launcher|get_quilt_loaders');
 }
-async function listForgeVersions() {
-    return await invoke('plugin:minecraft-launcher|list_forge_versions');
+async function getForgeVersions() {
+    return await invoke('plugin:minecraft-launcher|get_forge_versions');
 }
-async function listForgeLoaders() {
-    return await invoke('plugin:minecraft-launcher|list_forge_loaders');
+async function getForgeLoaders() {
+    return await invoke('plugin:minecraft-launcher|get_forge_loaders');
 }
 
-export { listFabricLoaders, listFabricVersions, listForgeLoaders, listForgeVersions, listQuiltLoaders, listQuiltVersions, listVanillaVersions };
+export { getFabricLoaders, getFabricVersions, getForgeLoaders, getForgeVersions, getQuiltLoaders, getQuiltVersions, getVanillaVersions };

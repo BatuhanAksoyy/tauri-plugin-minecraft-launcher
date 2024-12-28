@@ -29,10 +29,10 @@ export interface QuiltLoaderVersion {
     version: string;
     stable: boolean;
 }
-export declare function listVanillaVersions(): Promise<VanillaGameVersion[]>;
-export declare function listFabricVersions(): Promise<FabricGameVersion[]>;
-export declare function listFabricLoaders(): Promise<FabricLoaderVersion[]>;
-export declare function listQuiltVersions(): Promise<QuiltGameVersion[]>;
-export declare function listQuiltLoaders(): Promise<QuiltLoaderVersion[]>;
-export declare function listForgeVersions(): Promise<string[]>;
-export declare function listForgeLoaders(): Promise<string[]>;
+export declare function getVanillaVersions(): Promise<VanillaGameVersion[]>;
+export declare function getFabricVersions(): Promise<FabricGameVersion[]>;
+export declare function getFabricLoaders(): Promise<FabricLoaderVersion[]>;
+export declare function getQuiltVersions(): Promise<QuiltGameVersion[]>;
+export declare function getQuiltLoaders(): Promise<QuiltLoaderVersion[]>;
+export declare function getForgeVersions(): Promise<string[]>;
+export declare function getForgeLoaders(): Promise<string[]>;

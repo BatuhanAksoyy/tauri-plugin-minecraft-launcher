@@ -2,32 +2,32 @@
 
 var core = require('@tauri-apps/api/core');
 
-async function listVanillaVersions() {
-    return await core.invoke('plugin:minecraft-launcher|list_vanilla_versions');
+async function getVanillaVersions() {
+    return await core.invoke('plugin:minecraft-launcher|get_vanilla_versions');
 }
-async function listFabricVersions() {
-    return await core.invoke('plugin:minecraft-launcher|list_fabric_versions');
+async function getFabricVersions() {
+    return await core.invoke('plugin:minecraft-launcher|get_fabric_versions');
 }
-async function listFabricLoaders() {
-    return await core.invoke('plugin:minecraft-launcher|list_fabric_loaders');
+async function getFabricLoaders() {
+    return await core.invoke('plugin:minecraft-launcher|get_fabric_loaders');
 }
-async function listQuiltVersions() {
-    return await core.invoke('plugin:minecraft-launcher|list_quilt_versions');
+async function getQuiltVersions() {
+    return await core.invoke('plugin:minecraft-launcher|get_quilt_versions');
 }
-async function listQuiltLoaders() {
-    return await core.invoke('plugin:minecraft-launcher|list_quilt_loaders');
+async function getQuiltLoaders() {
+    return await core.invoke('plugin:minecraft-launcher|get_quilt_loaders');
 }
-async function listForgeVersions() {
-    return await core.invoke('plugin:minecraft-launcher|list_forge_versions');
+async function getForgeVersions() {
+    return await core.invoke('plugin:minecraft-launcher|get_forge_versions');
 }
-async function listForgeLoaders() {
-    return await core.invoke('plugin:minecraft-launcher|list_forge_loaders');
+async function getForgeLoaders() {
+    return await core.invoke('plugin:minecraft-launcher|get_forge_loaders');
 }
 
-exports.listFabricLoaders = listFabricLoaders;
-exports.listFabricVersions = listFabricVersions;
-exports.listForgeLoaders = listForgeLoaders;
-exports.listForgeVersions = listForgeVersions;
-exports.listQuiltLoaders = listQuiltLoaders;
-exports.listQuiltVersions = listQuiltVersions;
-exports.listVanillaVersions = listVanillaVersions;
+exports.getFabricLoaders = getFabricLoaders;
+exports.getFabricVersions = getFabricVersions;
+exports.getForgeLoaders = getForgeLoaders;
+exports.getForgeVersions = getForgeVersions;
+exports.getQuiltLoaders = getQuiltLoaders;
+exports.getQuiltVersions = getQuiltVersions;
+exports.getVanillaVersions = getVanillaVersions;
