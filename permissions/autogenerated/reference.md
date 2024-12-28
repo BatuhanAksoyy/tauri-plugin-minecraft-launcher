@@ -99,6 +99,32 @@ Denies the get_forge_loaders command without any pre-configured scope.
 <tr>
 <td>
 
+`minecraft-launcher:allow-get-forge-metadata`
+
+</td>
+<td>
+
+Enables the get_forge_metadata command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-forge-metadata`
+
+</td>
+<td>
+
+Denies the get_forge_metadata command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `minecraft-launcher:allow-get-forge-versions`
 
 </td>

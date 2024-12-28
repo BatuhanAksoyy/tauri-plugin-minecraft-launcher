@@ -325,6 +325,16 @@
           "const": "deny-get-forge-loaders"
         },
         {
+          "description": "Enables the get_forge_metadata command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-forge-metadata"
+        },
+        {
+          "description": "Denies the get_forge_metadata command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-forge-metadata"
+        },
+        {
           "description": "Enables the get_forge_versions command without any pre-configured scope.",
           "type": "string",
           "const": "allow-get-forge-versions"
