@@ -36,6 +36,8 @@ export interface QuiltLoaderVersion {
   stable: boolean;
 }
 
+export type ForgeVersionList = Map<string, string[]>;
+
 export async function getVanillaVersions(): Promise<VanillaGameVersion[]> {
   return await invoke('plugin:minecraft-launcher|get_vanilla_versions');
 }
@@ -56,12 +58,8 @@ export async function getQuiltLoaders(): Promise<QuiltLoaderVersion[]> {
   return await invoke('plugin:minecraft-launcher|get_quilt_loaders');
 }
 
-export async function getForgeVersions(): Promise<string[]> {
-  return await invoke('plugin:minecraft-launcher|get_forge_versions');
-}
-
-export async function getForgeLoaders(): Promise<string[]> {
-  return await invoke('plugin:minecraft-launcher|get_forge_loaders');
+export async function getForgeMetadata(): Promise<ForgeVersionList> {
+  return await invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
 
 
