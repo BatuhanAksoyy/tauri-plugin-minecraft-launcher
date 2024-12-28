@@ -295,6 +295,76 @@
       "type": "string",
       "oneOf": [
         {
+          "description": "Enables the get_fabric_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-fabric-loaders"
+        },
+        {
+          "description": "Denies the get_fabric_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-fabric-loaders"
+        },
+        {
+          "description": "Enables the get_fabric_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-fabric-versions"
+        },
+        {
+          "description": "Denies the get_fabric_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-fabric-versions"
+        },
+        {
+          "description": "Enables the get_forge_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-forge-loaders"
+        },
+        {
+          "description": "Denies the get_forge_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-forge-loaders"
+        },
+        {
+          "description": "Enables the get_forge_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-forge-versions"
+        },
+        {
+          "description": "Denies the get_forge_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-forge-versions"
+        },
+        {
+          "description": "Enables the get_quilt_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-quilt-loaders"
+        },
+        {
+          "description": "Denies the get_quilt_loaders command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-quilt-loaders"
+        },
+        {
+          "description": "Enables the get_quilt_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-quilt-versions"
+        },
+        {
+          "description": "Denies the get_quilt_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-quilt-versions"
+        },
+        {
+          "description": "Enables the get_vanilla_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-vanilla-versions"
+        },
+        {
+          "description": "Denies the get_vanilla_versions command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-vanilla-versions"
+        },
+        {
           "description": "Enables the list_fabric_loaders command without any pre-configured scope.",
           "type": "string",
           "const": "allow-list-fabric-loaders"

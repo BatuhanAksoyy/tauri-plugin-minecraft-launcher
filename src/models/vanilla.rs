@@ -20,6 +20,4 @@ pub struct VanillaGameVersion {
     pub url: String,
     pub time: String,
     pub release_time: String,
-    pub sha1: String,
-    pub compliance_level: u8,
 }

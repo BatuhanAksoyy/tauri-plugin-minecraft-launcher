@@ -2,7 +2,12 @@
 
 Default permissions for the plugin
 
-- `allow-ping`
+- `allow-list-fabric-loaders`
+- `allow-list-fabric-versions`
+- `allow-list-forge-versions`
+- `allow-list-forge-loaders`
+- `allow-list-quilt-versions`
+- `allow-list-quilt-loaders`
 
 ## Permission Table
 
@@ -12,6 +17,188 @@ Default permissions for the plugin
 <th>Description</th>
 </tr>
 
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-fabric-loaders`
+
+</td>
+<td>
+
+Enables the get_fabric_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-fabric-loaders`
+
+</td>
+<td>
+
+Denies the get_fabric_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-fabric-versions`
+
+</td>
+<td>
+
+Enables the get_fabric_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-fabric-versions`
+
+</td>
+<td>
+
+Denies the get_fabric_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-forge-loaders`
+
+</td>
+<td>
+
+Enables the get_forge_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-forge-loaders`
+
+</td>
+<td>
+
+Denies the get_forge_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-forge-versions`
+
+</td>
+<td>
+
+Enables the get_forge_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-forge-versions`
+
+</td>
+<td>
+
+Denies the get_forge_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-quilt-loaders`
+
+</td>
+<td>
+
+Enables the get_quilt_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-quilt-loaders`
+
+</td>
+<td>
+
+Denies the get_quilt_loaders command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-quilt-versions`
+
+</td>
+<td>
+
+Enables the get_quilt_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-quilt-versions`
+
+</td>
+<td>
+
+Denies the get_quilt_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:allow-get-vanilla-versions`
+
+</td>
+<td>
+
+Enables the get_vanilla_versions command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-get-vanilla-versions`
+
+</td>
+<td>
+
+Denies the get_vanilla_versions command without any pre-configured scope.
+
+</td>
+</tr>
 
 <tr>
 <td>

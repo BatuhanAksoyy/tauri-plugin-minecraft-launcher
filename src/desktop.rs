@@ -1,7 +1,7 @@
-use fabric::{FabricGameVersion, FabricLoaderVersion, FabricVersionList};
+use fabric::{FabricGameVersion, FabricLoaderVersion};
 use forge::ForgeVersionList;
 use lyceris::http;
-use quilt::{QuiltGameVersion, QuiltLoaderVersion, QuiltVersionList};
+use quilt::{QuiltGameVersion, QuiltLoaderVersion};
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
 use vanilla::{VanillaGameVersion, VanillaVersionList};
@@ -19,81 +19,34 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
 pub struct MinecraftLauncher<R: Runtime>(AppHandle<R>);
 
 impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_vanilla_versions(&self) -> crate::Result<Vec<VanillaGameVersion>> {
+    pub async fn get_vanilla_versions(&self) -> crate::Result<Vec<VanillaGameVersion>> {
         Ok(http::fetch::fetch::<VanillaVersionList>(
             "https://launchermeta.mojang.com/mc/game/version_manifest.json",
         )
         .await?
         .versions)
     }
-}
 
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_fabric_versions(&self) -> crate::Result<Vec<FabricGameVersion>> {
-        Ok(
-            http::fetch::fetch::<FabricVersionList>("https://meta.fabricmc.net/v2/versions")
-                .await?
-                .game,
-        )
+    pub async fn get_fabric_versions(&self) -> crate::Result<Vec<FabricGameVersion>> {
+        Ok(http::fetch::fetch("https://meta.fabricmc.net/v2/versions/game").await?)
     }
-}
 
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_fabric_loaders(&self) -> crate::Result<Vec<FabricLoaderVersion>> {
-        Ok(
-            http::fetch::fetch::<FabricVersionList>("https://meta.fabricmc.net/v2/versions")
-                .await?
-                .loader,
-        )
+    pub async fn get_fabric_loaders(&self) -> crate::Result<Vec<FabricLoaderVersion>> {
+        Ok(http::fetch::fetch("https://meta.fabricmc.net/v2/versions/loader").await?)
     }
-}
 
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_quilt_versions(&self) -> crate::Result<Vec<QuiltGameVersion>> {
-        Ok(
-            http::fetch::fetch::<QuiltVersionList>("https://meta.fabricmc.net/v2/versions")
-                .await?
-                .game,
-        )
+    pub async fn get_quilt_versions(&self) -> crate::Result<Vec<QuiltGameVersion>> {
+        Ok(http::fetch::fetch("https://meta.fabricmc.net/v2/versions/game").await?)
     }
-}
 
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_quilt_loaders(&self) -> crate::Result<Vec<QuiltLoaderVersion>> {
-        Ok(
-            http::fetch::fetch::<QuiltVersionList>("https://meta.fabricmc.net/v2/versions")
-                .await?
-                .loader,
-        )
+    pub async fn get_quilt_loaders(&self) -> crate::Result<Vec<QuiltLoaderVersion>> {
+        Ok(http::fetch::fetch("https://meta.fabricmc.net/v2/versions").await?)
     }
-}
 
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_forge_loaders(&self) -> crate::Result<Vec<String>> {
+    pub async fn get_forge_metadata(&self) -> crate::Result<ForgeVersionList> {
         Ok(http::fetch::fetch::<ForgeVersionList>(
             "https://files.minecraftforge.net/net/minecraftforge/forge/maven-metadata.json",
         )
-        .await?
-        .values()
-        .flat_map(|list| {
-            list.iter()
-                .filter_map(|version| version.split("-").nth(1).map(|s| s.to_string()))
-        })
-        .collect::<Vec<String>>())
-    }
-}
-
-impl<R: Runtime> MinecraftLauncher<R> {
-    pub async fn list_forge_versions(&self) -> crate::Result<Vec<String>> {
-        Ok(http::fetch::fetch::<ForgeVersionList>(
-            "https://files.minecraftforge.net/net/minecraftforge/forge/maven-metadata.json",
-        )
-        .await?
-        .values()
-        .flat_map(|list| {
-            list.iter()
-                .filter_map(|version| version.split("-").nth(0).map(|s| s.to_string()))
-        })
-        .collect::<Vec<String>>())
+        .await?)
     }
 }

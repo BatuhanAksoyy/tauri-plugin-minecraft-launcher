@@ -32,13 +32,12 @@ impl<R: Runtime, T: Manager<R>> crate::MinecraftLauncherExt<R> for T {
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("minecraft-launcher")
         .invoke_handler(tauri::generate_handler![
-            commands::list_vanilla_versions,
-            commands::list_fabric_versions,
-            commands::list_fabric_loaders,
-            commands::list_quilt_versions,
-            commands::list_quilt_loaders,
-            commands::list_forge_versions,
-            commands::list_forge_loaders
+            commands::get_vanilla_versions,
+            commands::get_fabric_versions,
+            commands::get_fabric_loaders,
+            commands::get_quilt_versions,
+            commands::get_quilt_loaders,
+            commands::get_forge_metadata
         ])
         .setup(|app, api| {
             #[cfg(mobile)]

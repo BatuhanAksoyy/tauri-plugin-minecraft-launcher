@@ -1,11 +1,11 @@
 const COMMANDS: &[&str] = &[
-    "list_vanilla_versions",
-    "list_fabric_versions",
-    "list_fabric_loaders",
-    "list_quilt_versions",
-    "list_quilt_loaders",
-    "list_forge_versions",
-    "list_forge_loaders",
+    "get_vanilla_versions",
+    "get_fabric_versions",
+    "get_fabric_loaders",
+    "get_quilt_versions",
+    "get_quilt_loaders",
+    "get_forge_versions",
+    "get_forge_loaders",
 ];
 
 fn main() {

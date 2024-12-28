@@ -14,7 +14,7 @@ pub struct FabricGameVersion {
 
 #[derive(Serialize, Deserialize)]
 pub struct FabricLoaderVersion {
-    seperator: String,
+    separator: String,
     build: u16,
     maven: String,
     version: String,
