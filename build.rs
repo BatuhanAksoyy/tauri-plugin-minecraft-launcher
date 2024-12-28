@@ -4,7 +4,8 @@ const COMMANDS: &[&str] = &[
     "get_fabric_loaders",
     "get_quilt_versions",
     "get_quilt_loaders",
-    "get_forge_metadata"
+    "get_forge_metadata",
+    "install_minecraft"
 ];
 
 fn main() {

@@ -1,6 +1,7 @@
 use fabric::FabricGameVersion;
 use fabric::FabricLoaderVersion;
 use forge::ForgeVersionList;
+use lyceris::auth::AuthMethod;
 use quilt::QuiltGameVersion;
 use quilt::QuiltLoaderVersion;
 use tauri::{command, AppHandle, Runtime};
@@ -48,4 +49,16 @@ pub(crate) async fn get_quilt_loaders<R: Runtime>(
 #[command]
 pub(crate) async fn get_forge_metadata<R: Runtime>(app: AppHandle<R>) -> Result<ForgeVersionList> {
     app.minecraft_launcher().get_forge_metadata().await
+}
+
+#[command]
+pub(crate) async fn install_minecraft<R: Runtime>(
+    app: AppHandle<R>,
+    version: String,
+    path: String,
+    auth: AuthMethod,
+) -> Result<()> {
+    app.minecraft_launcher()
+        .install_minecraft(version, path, auth)
+        .await
 }

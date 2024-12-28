@@ -375,6 +375,16 @@
           "const": "deny-get-vanilla-versions"
         },
         {
+          "description": "Enables the install_minecraft command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-install-minecraft"
+        },
+        {
+          "description": "Denies the install_minecraft command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-install-minecraft"
+        },
+        {
           "description": "Enables the list_fabric_loaders command without any pre-configured scope.",
           "type": "string",
           "const": "allow-list-fabric-loaders"

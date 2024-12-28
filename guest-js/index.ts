@@ -5,9 +5,7 @@ export interface VanillaGameVersion {
   type: string;
   url: string;
   time: string;
-  release_time: string;
-  sha1: string;
-  compliance_level: number;
+  releaseTime: string;
 }
 
 export interface FabricGameVersion {
@@ -16,7 +14,7 @@ export interface FabricGameVersion {
 }
 
 export interface FabricLoaderVersion {
-  seperator: string;
+  separator: string;
   build: number;
   maven: string;
   version: string;
@@ -29,11 +27,24 @@ export interface QuiltGameVersion {
 }
 
 export interface QuiltLoaderVersion {
-  seperator: string;
+  separator: string;
   build: number;
   maven: string;
   version: string;
-  stable: boolean;
+}
+
+export interface AuthMethod {
+  Offline: {
+    username: string,
+    uuid: string
+  },
+  Microsoft: {
+    access_token: string,
+    refresh_token: string,
+    uuid: string,
+    xuid: string,
+    username: string
+  },
 }
 
 export type ForgeVersionList = Map<string, string[]>;
@@ -62,4 +73,7 @@ export async function getForgeMetadata(): Promise<ForgeVersionList> {
   return await invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
 
+export async function installMinecraft(version: string, path: string, auth: AuthMethod): Promise<void> {
+  return await invoke('plugin:minecraft-launcher|install_minecraft', { version, path, auth });
+}
 

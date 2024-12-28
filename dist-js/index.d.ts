@@ -3,16 +3,14 @@ export interface VanillaGameVersion {
     type: string;
     url: string;
     time: string;
-    release_time: string;
-    sha1: string;
-    compliance_level: number;
+    releaseTime: string;
 }
 export interface FabricGameVersion {
     version: string;
     stable: boolean;
 }
 export interface FabricLoaderVersion {
-    seperator: string;
+    separator: string;
     build: number;
     maven: string;
     version: string;
@@ -23,11 +21,23 @@ export interface QuiltGameVersion {
     stable: boolean;
 }
 export interface QuiltLoaderVersion {
-    seperator: string;
+    separator: string;
     build: number;
     maven: string;
     version: string;
-    stable: boolean;
+}
+export interface AuthMethod {
+    Offline: {
+        username: string;
+        uuid: string;
+    };
+    Microsoft: {
+        access_token: string;
+        refresh_token: string;
+        uuid: string;
+        xuid: string;
+        username: string;
+    };
 }
 export type ForgeVersionList = Map<string, string[]>;
 export declare function getVanillaVersions(): Promise<VanillaGameVersion[]>;
@@ -36,3 +46,4 @@ export declare function getFabricLoaders(): Promise<FabricLoaderVersion[]>;
 export declare function getQuiltVersions(): Promise<QuiltGameVersion[]>;
 export declare function getQuiltLoaders(): Promise<QuiltLoaderVersion[]>;
 export declare function getForgeMetadata(): Promise<ForgeVersionList>;
+export declare function installMinecraft(version: string, path: string, auth: AuthMethod): Promise<void>;

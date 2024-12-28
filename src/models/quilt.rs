@@ -14,9 +14,8 @@ pub struct QuiltGameVersion {
 
 #[derive(Serialize, Deserialize)]
 pub struct QuiltLoaderVersion {
-    seperator: String,
+    separator: String,
     build: u16,
     maven: String,
     version: String,
-    stable: bool,
 }

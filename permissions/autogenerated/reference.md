@@ -229,6 +229,32 @@ Denies the get_vanilla_versions command without any pre-configured scope.
 <tr>
 <td>
 
+`minecraft-launcher:allow-install-minecraft`
+
+</td>
+<td>
+
+Enables the install_minecraft command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-install-minecraft`
+
+</td>
+<td>
+
+Denies the install_minecraft command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `minecraft-launcher:allow-list-fabric-loaders`
 
 </td>

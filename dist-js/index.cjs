@@ -20,6 +20,9 @@ async function getQuiltLoaders() {
 async function getForgeMetadata() {
     return await core.invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
+async function installMinecraft(version, path, auth) {
+    return await core.invoke('plugin:minecraft-launcher|install_minecraft', { version, path, auth });
+}
 
 exports.getFabricLoaders = getFabricLoaders;
 exports.getFabricVersions = getFabricVersions;
@@ -27,3 +30,4 @@ exports.getForgeMetadata = getForgeMetadata;
 exports.getQuiltLoaders = getQuiltLoaders;
 exports.getQuiltVersions = getQuiltVersions;
 exports.getVanillaVersions = getVanillaVersions;
+exports.installMinecraft = installMinecraft;

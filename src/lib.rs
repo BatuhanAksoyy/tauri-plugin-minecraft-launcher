@@ -37,7 +37,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::get_fabric_loaders,
             commands::get_quilt_versions,
             commands::get_quilt_loaders,
-            commands::get_forge_metadata
+            commands::get_forge_metadata,
+            commands::install_minecraft
         ])
         .setup(|app, api| {
             #[cfg(mobile)]
