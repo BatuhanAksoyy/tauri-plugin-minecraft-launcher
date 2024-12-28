@@ -15,11 +15,8 @@ async function getQuiltVersions() {
 async function getQuiltLoaders() {
     return await invoke('plugin:minecraft-launcher|get_quilt_loaders');
 }
-async function getForgeVersions() {
-    return await invoke('plugin:minecraft-launcher|get_forge_versions');
-}
-async function getForgeLoaders() {
-    return await invoke('plugin:minecraft-launcher|get_forge_loaders');
+async function getForgeMetadata() {
+    return await invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
 
-export { getFabricLoaders, getFabricVersions, getForgeLoaders, getForgeVersions, getQuiltLoaders, getQuiltVersions, getVanillaVersions };
+export { getFabricLoaders, getFabricVersions, getForgeMetadata, getQuiltLoaders, getQuiltVersions, getVanillaVersions };

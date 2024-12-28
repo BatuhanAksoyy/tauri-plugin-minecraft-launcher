@@ -29,10 +29,10 @@ export interface QuiltLoaderVersion {
     version: string;
     stable: boolean;
 }
+export type ForgeVersionList = Map<string, string[]>;
 export declare function getVanillaVersions(): Promise<VanillaGameVersion[]>;
 export declare function getFabricVersions(): Promise<FabricGameVersion[]>;
 export declare function getFabricLoaders(): Promise<FabricLoaderVersion[]>;
 export declare function getQuiltVersions(): Promise<QuiltGameVersion[]>;
 export declare function getQuiltLoaders(): Promise<QuiltLoaderVersion[]>;
-export declare function getForgeVersions(): Promise<string[]>;
-export declare function getForgeLoaders(): Promise<string[]>;
+export declare function getForgeMetadata(): Promise<ForgeVersionList>;
