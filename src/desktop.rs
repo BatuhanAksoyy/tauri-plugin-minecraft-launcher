@@ -4,7 +4,7 @@ use lyceris::http;
 use quilt::{QuiltGameVersion, QuiltLoaderVersion, QuiltVersionList};
 use serde::de::DeserializeOwned;
 use tauri::{plugin::PluginApi, AppHandle, Runtime};
-use vanilla::VanillaGameVersion;
+use vanilla::{VanillaGameVersion, VanillaVersionList};
 
 use crate::models::*;
 
@@ -20,10 +20,11 @@ pub struct MinecraftLauncher<R: Runtime>(AppHandle<R>);
 
 impl<R: Runtime> MinecraftLauncher<R> {
     pub async fn list_vanilla_versions(&self) -> crate::Result<Vec<VanillaGameVersion>> {
-        Ok(
-            http::fetch::fetch("https://launchermeta.mojang.com/mc/game/version_manifest.json")
-                .await?,
+        Ok(http::fetch::fetch::<VanillaVersionList>(
+            "https://launchermeta.mojang.com/mc/game/version_manifest.json",
         )
+        .await?
+        .versions)
     }
 }
 
