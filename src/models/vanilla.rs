@@ -13,9 +13,10 @@ pub struct Latest {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct VanillaGameVersion {
     pub id: String,
-    pub type_: String,
+    pub r#type: String,
     pub url: String,
     pub time: String,
     pub release_time: String,
