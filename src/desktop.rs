@@ -88,7 +88,7 @@ impl<R: Runtime> MinecraftLauncher<R> {
             .on(Event::SingleDownloadProgress, {
                 let app = self.app.clone();
                 move |(path, current, total): (String, u64, u64)| {
-                    app.emit("minecraft-single-progress", (path, current, total))
+                    app.emit("plugin:minecraft-launcher://single-progress", (path, current, total))
                         .expect("failed to emit minecraft-console event");
                 }
             })
@@ -98,7 +98,7 @@ impl<R: Runtime> MinecraftLauncher<R> {
             .on(Event::MultipleDownloadProgress, {
                 let app = self.app.clone();
                 move |(current, total): (u64, u64)| {
-                    app.emit("minecraft-multi-progress", (current, total))
+                    app.emit("plugin:minecraft-launcher://multi-progress", (current, total))
                         .expect("failed to emit minecraft-console event");
                 }
             })
@@ -108,7 +108,7 @@ impl<R: Runtime> MinecraftLauncher<R> {
             .on(Event::Console, {
                 let app = self.app.clone();
                 move |line: String| {
-                    app.emit("minecraft-console", line)
+                    app.emit("plugin:minecraft-launcher://console", line)
                         .expect("failed to emit minecraft-console event");
                 }
             })
