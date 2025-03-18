@@ -8,6 +8,8 @@ Default permissions for the plugin
 - `allow-list-forge-loaders`
 - `allow-list-quilt-versions`
 - `allow-list-quilt-loaders`
+- `allow-install-minecraft`
+- `allow-launch-minecraft`
 
 ## Permission Table
 

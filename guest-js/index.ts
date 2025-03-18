@@ -33,25 +33,24 @@ export interface QuiltLoaderVersion {
   version: string;
 }
 
-export interface AuthMethod {
-  Offline: {
-    username: string,
-    uuid: string
-  },
-  Microsoft: {
-    access_token: string,
-    refresh_token: string,
-    uuid: string,
-    xuid: string,
-    username: string
-  },
-}
-
 export interface Config {
   gameDir: string;
   version: string;
-  authentication: AuthMethod;
-  memory: Memory;
+  authentication: {
+    Offline: {
+      username: string,
+      uuid: string
+    },
+  } | {
+    Microsoft: {
+      access_token: string,
+      refresh_token: string,
+      uuid: string,
+      xuid: string,
+      username: string
+    },
+  }
+  memory: { Gigabyte: number } | { Megabyte: number };
   versionName: string;
   profile: Profile;
   loader: LoaderConfig;
@@ -69,11 +68,6 @@ export interface Profile {
 export interface LoaderConfig {
   type: string;
   version: string;
-}
-
-export interface Memory {
-  Gigabyte: number,
-  Megabyte: number
 }
 
 export type ForgeVersionList = Map<string, string[]>;
