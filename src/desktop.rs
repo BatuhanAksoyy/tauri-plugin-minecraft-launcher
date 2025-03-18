@@ -174,7 +174,7 @@ impl From<Config> for lyceris::Config<Box<dyn Loader>> {
             profile: config.profile,
             loader: {
                 if let Some(loader) = config.loader {
-                    Some(match loader.r#type.as_str() {
+                    Some(match loader.r#type.to_lowercase().as_str() {
                         "fabric" => {
                             Box::new(lyceris::minecraft::loader::fabric::Fabric(loader.version))
                         }
