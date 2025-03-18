@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Miate"]
 description = ""
 edition = "2021"
-rust-version = "1.77.2"
+rust-version = "1.80"
 exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
 links = "tauri-plugin-minecraft-launcher"
 
@@ -12,7 +12,8 @@ links = "tauri-plugin-minecraft-launcher"
 tauri = { version = "2.1.0" }
 serde = "1.0"
 thiserror = "2"
-lyceris = { git = "https://github.com/BatuhanAksoyy/lyceris", rev = "31fdac7e7ad4f22607671996d14c90a49b7ad153"}
+lyceris = "1.1.2"
+tokio = { version = "1.44.1", features = ["process"] }
 
 [build-dependencies]
 tauri-plugin = { version = "2.0.2", features = ["build"] }

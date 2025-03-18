@@ -39,6 +39,31 @@ export interface AuthMethod {
         username: string;
     };
 }
+export interface Config {
+    gameDir: string;
+    version: string;
+    authentication: AuthMethod;
+    memory: Memory;
+    versionName: string;
+    profile: Profile;
+    loader: LoaderConfig;
+    javaVersion: string;
+    runtimeDir: string;
+    customJavaArgs: string[];
+    customArgs: string[];
+}
+export interface Profile {
+    name: string;
+    root: string;
+}
+export interface LoaderConfig {
+    type: string;
+    version: string;
+}
+export interface Memory {
+    Gigabyte: number;
+    Megabyte: number;
+}
 export type ForgeVersionList = Map<string, string[]>;
 export declare function getVanillaVersions(): Promise<VanillaGameVersion[]>;
 export declare function getFabricVersions(): Promise<FabricGameVersion[]>;
@@ -46,4 +71,5 @@ export declare function getFabricLoaders(): Promise<FabricLoaderVersion[]>;
 export declare function getQuiltVersions(): Promise<QuiltGameVersion[]>;
 export declare function getQuiltLoaders(): Promise<QuiltLoaderVersion[]>;
 export declare function getForgeMetadata(): Promise<ForgeVersionList>;
-export declare function installMinecraft(version: string, path: string, auth: AuthMethod): Promise<void>;
+export declare function installMinecraft(config: Config): Promise<void>;
+export declare function launchMinecraft(config: Config): Promise<void>;

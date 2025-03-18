@@ -18,8 +18,11 @@ async function getQuiltLoaders() {
 async function getForgeMetadata() {
     return await invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
-async function installMinecraft(version, path, auth) {
-    return await invoke('plugin:minecraft-launcher|install_minecraft', { version, path, auth });
+async function installMinecraft(config) {
+    return await invoke('plugin:minecraft-launcher|install_minecraft', { config });
+}
+async function launchMinecraft(config) {
+    return await invoke('plugin:minecraft-launcher|launch_minecraft', { config });
 }
 
-export { getFabricLoaders, getFabricVersions, getForgeMetadata, getQuiltLoaders, getQuiltVersions, getVanillaVersions, installMinecraft };
+export { getFabricLoaders, getFabricVersions, getForgeMetadata, getQuiltLoaders, getQuiltVersions, getVanillaVersions, installMinecraft, launchMinecraft };

@@ -47,6 +47,35 @@ export interface AuthMethod {
   },
 }
 
+export interface Config {
+  gameDir: string;
+  version: string;
+  authentication: AuthMethod;
+  memory: Memory;
+  versionName: string;
+  profile: Profile;
+  loader: LoaderConfig;
+  javaVersion: string;
+  runtimeDir: string;
+  customJavaArgs: string[];
+  customArgs: string[];
+}
+
+export interface Profile {
+  name: string;
+  root: string;
+}
+
+export interface LoaderConfig {
+  type: string;
+  version: string;
+}
+
+export interface Memory {
+  Gigabyte: number,
+  Megabyte: number
+}
+
 export type ForgeVersionList = Map<string, string[]>;
 
 export async function getVanillaVersions(): Promise<VanillaGameVersion[]> {
@@ -73,7 +102,10 @@ export async function getForgeMetadata(): Promise<ForgeVersionList> {
   return await invoke('plugin:minecraft-launcher|get_forge_metadata');
 }
 
-export async function installMinecraft(version: string, path: string, auth: AuthMethod): Promise<void> {
-  return await invoke('plugin:minecraft-launcher|install_minecraft', { version, path, auth });
+export async function installMinecraft(config: Config): Promise<void> {
+  return await invoke('plugin:minecraft-launcher|install_minecraft', { config });
 }
 
+export async function launchMinecraft(config: Config): Promise<void> {
+  return await invoke('plugin:minecraft-launcher|launch_minecraft', { config });
+}

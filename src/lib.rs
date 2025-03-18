@@ -1,3 +1,6 @@
+use std::sync::Arc;
+
+use lyceris::minecraft::emitter::Emitter;
 use tauri::{
     plugin::{Builder, TauriPlugin},
     Manager, Runtime,
@@ -16,6 +19,7 @@ pub use error::{Error, Result};
 
 #[cfg(desktop)]
 use desktop::MinecraftLauncher;
+use tokio::sync::Mutex;
 
 /// Extensions to [`tauri::App`], [`tauri::AppHandle`] and [`tauri::Window`] to access the minecraft-launcher APIs.
 pub trait MinecraftLauncherExt<R: Runtime> {
@@ -38,13 +42,15 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             commands::get_quilt_versions,
             commands::get_quilt_loaders,
             commands::get_forge_metadata,
-            commands::install_minecraft
+            commands::install_minecraft,
+            commands::launch_minecraft
         ])
         .setup(|app, api| {
             #[cfg(mobile)]
             unimplemented!();
             #[cfg(desktop)]
-            let minecraft_launcher = desktop::init(app, api)?;
+            let minecraft_launcher =
+                desktop::init(app, Arc::new(Mutex::new(None)), Emitter::default(), api)?;
             app.manage(minecraft_launcher);
             Ok(())
         })

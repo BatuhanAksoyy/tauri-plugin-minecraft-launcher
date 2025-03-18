@@ -73,32 +73,6 @@ Denies the get_fabric_versions command without any pre-configured scope.
 <tr>
 <td>
 
-`minecraft-launcher:allow-get-forge-loaders`
-
-</td>
-<td>
-
-Enables the get_forge_loaders command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`minecraft-launcher:deny-get-forge-loaders`
-
-</td>
-<td>
-
-Denies the get_forge_loaders command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
 `minecraft-launcher:allow-get-forge-metadata`
 
 </td>
@@ -118,32 +92,6 @@ Enables the get_forge_metadata command without any pre-configured scope.
 <td>
 
 Denies the get_forge_metadata command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`minecraft-launcher:allow-get-forge-versions`
-
-</td>
-<td>
-
-Enables the get_forge_versions command without any pre-configured scope.
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-`minecraft-launcher:deny-get-forge-versions`
-
-</td>
-<td>
-
-Denies the get_forge_versions command without any pre-configured scope.
 
 </td>
 </tr>

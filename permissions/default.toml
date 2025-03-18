@@ -6,5 +6,7 @@ permissions = [
     "allow-list-forge-versions",
     "allow-list-forge-loaders",
     "allow-list-quilt-versions",
-    "allow-list-quilt-loaders"
+    "allow-list-quilt-loaders",
+    "allow-install-minecraft",
+    "allow-launch-minecraft"
 ]

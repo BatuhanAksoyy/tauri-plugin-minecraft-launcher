@@ -8,6 +8,8 @@ pub enum Error {
     Io(#[from] std::io::Error),
     #[error(transparent)]
     Lyceris(#[from] lyceris::error::Error),
+    #[error(transparent)]
+    Tauri(#[from] tauri::Error),
     #[cfg(mobile)]
     #[error(transparent)]
     PluginInvoke(#[from] tauri::plugin::mobile::PluginInvokeError),

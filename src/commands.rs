@@ -1,12 +1,12 @@
 use fabric::FabricGameVersion;
 use fabric::FabricLoaderVersion;
 use forge::ForgeVersionList;
-use lyceris::auth::AuthMethod;
 use quilt::QuiltGameVersion;
 use quilt::QuiltLoaderVersion;
 use tauri::{command, AppHandle, Runtime};
 use vanilla::VanillaGameVersion;
 
+use crate::desktop::Config;
 use crate::models::*;
 use crate::MinecraftLauncherExt;
 use crate::Result;
@@ -52,13 +52,11 @@ pub(crate) async fn get_forge_metadata<R: Runtime>(app: AppHandle<R>) -> Result<
 }
 
 #[command]
-pub(crate) async fn install_minecraft<R: Runtime>(
-    app: AppHandle<R>,
-    version: String,
-    path: String,
-    auth: AuthMethod,
-) -> Result<()> {
-    app.minecraft_launcher()
-        .install_minecraft(version, path, auth)
-        .await
+pub(crate) async fn install_minecraft<R: Runtime>(app: AppHandle<R>, config: Config) -> Result<()> {
+    app.minecraft_launcher().install_minecraft(config).await
+}
+
+#[command]
+pub(crate) async fn launch_minecraft<R: Runtime>(app: AppHandle<R>, config: Config) -> Result<()> {
+    app.minecraft_launcher().launch_minecraft(config).await
 }
