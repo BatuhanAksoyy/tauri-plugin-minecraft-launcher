@@ -27,6 +27,48 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
     emitter: Emitter,
     _api: PluginApi<R, C>,
 ) -> crate::Result<MinecraftLauncher<R>> {
+    tauri::async_runtime::spawn({
+        let emitter = emitter.clone();
+        let app = app.clone();
+        async move {
+            emitter
+                .on(Event::SingleDownloadProgress, {
+                    let app = app.clone();
+                    move |(path, current, total): (String, u64, u64)| {
+                        app.emit(
+                            "plugin:minecraft-launcher://single-progress",
+                            (path, current, total),
+                        )
+                        .expect("failed to emit minecraft-console event");
+                    }
+                })
+                .await;
+
+            emitter
+                .on(Event::MultipleDownloadProgress, {
+                    let app = app.clone();
+                    move |(current, total): (u64, u64)| {
+                        app.emit(
+                            "plugin:minecraft-launcher://multi-progress",
+                            (current, total),
+                        )
+                        .expect("failed to emit minecraft-console event");
+                    }
+                })
+                .await;
+
+            emitter
+                .on(Event::Console, {
+                    let app = app.clone();
+                    move |line: String| {
+                        app.emit("plugin:minecraft-launcher://console", line)
+                            .expect("failed to emit minecraft-console event");
+                    }
+                })
+                .await;
+        }
+    });
+
     Ok(MinecraftLauncher {
         app: app.clone(),
         child,
@@ -83,36 +125,6 @@ impl<R: Runtime> MinecraftLauncher<R> {
     pub async fn launch_minecraft(&self, config: Config) -> crate::Result<()> {
         let child = lyceris::launch(&config.into(), Some(&self.emitter)).await?;
         self.child.lock().await.replace(child);
-
-        self.emitter
-            .on(Event::SingleDownloadProgress, {
-                let app = self.app.clone();
-                move |(path, current, total): (String, u64, u64)| {
-                    app.emit("plugin:minecraft-launcher://single-progress", (path, current, total))
-                        .expect("failed to emit minecraft-console event");
-                }
-            })
-            .await;
-
-        self.emitter
-            .on(Event::MultipleDownloadProgress, {
-                let app = self.app.clone();
-                move |(current, total): (u64, u64)| {
-                    app.emit("plugin:minecraft-launcher://multi-progress", (current, total))
-                        .expect("failed to emit minecraft-console event");
-                }
-            })
-            .await;
-
-        self.emitter
-            .on(Event::Console, {
-                let app = self.app.clone();
-                move |line: String| {
-                    app.emit("plugin:minecraft-launcher://console", line)
-                        .expect("failed to emit minecraft-console event");
-                }
-            })
-            .await;
 
         tauri::async_runtime::spawn({
             let app = self.app.clone();
