@@ -205,6 +205,32 @@ Denies the install_minecraft command without any pre-configured scope.
 <tr>
 <td>
 
+`minecraft-launcher:allow-launch-minecraft`
+
+</td>
+<td>
+
+Enables the launch_minecraft command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`minecraft-launcher:deny-launch-minecraft`
+
+</td>
+<td>
+
+Denies the launch_minecraft command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `minecraft-launcher:allow-list-fabric-loaders`
 
 </td>

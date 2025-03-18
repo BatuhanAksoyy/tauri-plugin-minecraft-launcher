@@ -31,15 +31,36 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
         let emitter = emitter.clone();
         let app = app.clone();
         async move {
+            #[derive(Serialize, Deserialize, Clone)]
+            struct Payload {
+                #[serde(skip_serializing_if = "Option::is_none")]
+                path: Option<String>,
+                #[serde(skip_serializing_if = "Option::is_none")]
+                current: Option<u64>,
+                #[serde(skip_serializing_if = "Option::is_none")]
+                total: Option<u64>,
+                #[serde(skip_serializing_if = "Option::is_none")]
+                line: Option<String>,
+            }
+
+            let emit_event = |app: &AppHandle<R>, event: &str, payload: Payload| {
+                app.emit(event, payload).expect("Failed to emit event");
+            };
+
             emitter
                 .on(Event::SingleDownloadProgress, {
                     let app = app.clone();
                     move |(path, current, total): (String, u64, u64)| {
-                        app.emit(
+                        emit_event(
+                            &app,
                             "plugin:minecraft-launcher://single-progress",
-                            (path, current, total),
-                        )
-                        .expect("failed to emit minecraft-console event");
+                            Payload {
+                                path: Some(path),
+                                current: Some(current),
+                                total: Some(total),
+                                line: None,
+                            },
+                        );
                     }
                 })
                 .await;
@@ -48,11 +69,16 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
                 .on(Event::MultipleDownloadProgress, {
                     let app = app.clone();
                     move |(current, total): (u64, u64)| {
-                        app.emit(
+                        emit_event(
+                            &app,
                             "plugin:minecraft-launcher://multi-progress",
-                            (current, total),
-                        )
-                        .expect("failed to emit minecraft-console event");
+                            Payload {
+                                path: None,
+                                current: Some(current),
+                                total: Some(total),
+                                line: None,
+                            },
+                        );
                     }
                 })
                 .await;
@@ -61,8 +87,16 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
                 .on(Event::Console, {
                     let app = app.clone();
                     move |line: String| {
-                        app.emit("plugin:minecraft-launcher://console", line)
-                            .expect("failed to emit minecraft-console event");
+                        emit_event(
+                            &app,
+                            "plugin:minecraft-launcher://console",
+                            Payload {
+                                path: None,
+                                current: None,
+                                total: None,
+                                line: Some(line),
+                            },
+                        );
                     }
                 })
                 .await;

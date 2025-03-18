@@ -365,6 +365,16 @@
           "const": "deny-install-minecraft"
         },
         {
+          "description": "Enables the launch_minecraft command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-launch-minecraft"
+        },
+        {
+          "description": "Denies the launch_minecraft command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-launch-minecraft"
+        },
+        {
           "description": "Enables the list_fabric_loaders command without any pre-configured scope.",
           "type": "string",
           "const": "allow-list-fabric-loaders"
