@@ -68,12 +68,12 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
             emitter
                 .on(Event::MultipleDownloadProgress, {
                     let app = app.clone();
-                    move |(current, total): (u64, u64)| {
+                    move |(path, current, total): (String, u64, u64)| {
                         emit_event(
                             &app,
                             "plugin:minecraft-launcher://multi-progress",
                             Payload {
-                                path: None,
+                                path: Some(path),
                                 current: Some(current),
                                 total: Some(total),
                                 line: None,
